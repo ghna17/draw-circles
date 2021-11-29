@@ -1,0 +1,46 @@
+#import modules from math, turtle, and random
+from turtle import *
+from math import *
+from random import *
+
+#create a variable for the total area of all circles
+total = 0
+
+#assign a name to Turtle() function
+han = Turtle()
+
+#ask user how many circles he/she wants
+circles = int(input("How many circles you want to draw? >> "))
+
+#use for loop to start drawing circles
+for i in range(circles):
+	radius = randint(10,50) #choose radius randomly
+	area = round((pi*radius**2),2)
+	han.circle(radius)
+	#use up(), goto(), and down() functions so the program will draw circles at random location within clean space
+	x = randint(-100,100)
+	y = randint(-100,100)
+	han.up()
+	han.goto(x,y)
+	han.down()
+	print("The area of circle", i+1, "is", area,"square units.")
+	#assign a sum of areas to variable "total" by using addition assignment operator
+	total += area
+	#use conditional statement to print out special alert properly
+	if i == (circles-2):
+		#print the state diagram, I search on the internet to print multiple lines within variables -> I try to use format().
+		print("--------",
+			  "State Diagram:", 
+			  "total ---> {}".format(total),
+			  "circles ---> {}".format(circles-1),
+			  "radius ---> {}".format(radius),
+			  "area --> {}".format(area),
+			  "han:",
+			  "- x ---> {}".format(x),
+			  "- y ---> {}".format(y),
+			  "--------", sep='\n')
+		#print the special alert
+		print("Here is the last circle!")
+		
+#print out the sum of area
+print("The total area of circles is", total,"square units.")
